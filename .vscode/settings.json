@@ -1,0 +1,16 @@
+{
+    "editor.bracketPairColorization.enabled": true,
+    "eslint.alwaysShowStatus": true,
+    "eslint.format.enable": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "eslint.debug": true,
+    "editor.suggest.preview": true,
+    "editor.suggest.shareSuggestSelections": true,
+    "files.autoGuessEncoding": true,
+    "files.insertFinalNewline": true,
+    "eslint.lintTask.enable": true,
+    "eslint.onIgnoredFiles": "warn",
+    "editor.quickSuggestionsDelay": 2,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
+}
