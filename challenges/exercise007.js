@@ -3,8 +3,16 @@
  * @param {Number} n
  */
 const sumDigits = n => {
-  if (n === undefined) throw new Error("n is required");
-};
+  if (n === undefined) throw new Error('n is required')
+  const numberArr = n.toString().split('')
+  let sum = 0
+
+  numberArr.forEach(element => {
+    sum += Number.parseInt(element)
+  })
+
+  return sum
+}
 
 /**
  * This function creates a range of numbers as an array. It received a start, an end and a step. Step is the gap between numbers in the range. For example, if start = 3, end = 11 and step = 2 the resulting range would be: [3, 5, 7, 9, 11]
@@ -15,9 +23,15 @@ const sumDigits = n => {
  * @param {Number} step
  */
 const createRange = (start, end, step) => {
-  if (start === undefined) throw new Error("start is required");
-  if (end === undefined) throw new Error("end is required");
-};
+  if (start === undefined) throw new Error('start is required')
+  if (end === undefined) throw new Error('end is required')
+  if (step === undefined) step = 1
+  let sequenceArr = []
+  for (let i = start; i <= end; i += step) {
+    sequenceArr.push(i)
+  }
+  return sequenceArr
+}
 
 /**
  * This function takes an array of user objects and their usage in minutes of various applications. The format of the data should be as follows:
@@ -49,9 +63,29 @@ const createRange = (start, end, step) => {
  * @param {Array} users
  */
 const getScreentimeAlertList = (users, date) => {
-  if (users === undefined) throw new Error("users is required");
-  if (date === undefined) throw new Error("date is required");
-};
+  if (users === undefined) throw new Error('users is required')
+  if (date === undefined) throw new Error('date is required')
+
+  let userNames = []
+  users.forEach(user => {
+    //check any user matches with the date
+    let userDateMatched = user.screenTime.filter(
+      element => element.date === date
+    )
+
+    if (userDateMatched.length > 0) {
+      //if user found, proceed for screentime
+      let userTotalTimeTaken = 0
+      userDateMatched.forEach((key, value) => {
+        for (const [usageKey, usageValue] of Object.entries(key.usage)) {
+          userTotalTimeTaken += usageValue //sum up all usage timings
+        }
+      })
+      if (userTotalTimeTaken > 100) userNames.push(user.username)
+    }
+  })
+  return userNames
+}
 
 /**
  * This function will receive a hexadecimal color code in the format #FF1133. A hexadecimal code is a number written in hexadecimal notation, i.e. base 16. If you want to know more about hexadecimal notation:
@@ -64,8 +98,21 @@ const getScreentimeAlertList = (users, date) => {
  * @param {String} str
  */
 const hexToRGB = hexStr => {
-  if (hexStr === undefined) throw new Error("hexStr is required");
-};
+  if (hexStr === undefined) throw new Error('hexStr is required')
+
+  let hexStrArr = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexStr)
+  let rgb = []
+
+  if (hexStrArr != null) {
+    rgb = [
+      parseInt(hexStrArr[1], 16),
+      parseInt(hexStrArr[2], 16),
+      parseInt(hexStrArr[3], 16)
+    ]
+  }
+
+  return hexStrArr != null ? 'rgb(' + rgb + ')' : ''
+}
 
 /**
  * This function takes a noughts and crosses board represented as an array, where an empty space is represented with null.
@@ -78,8 +125,33 @@ const hexToRGB = hexStr => {
  * @param {Array} board
  */
 const findWinner = board => {
-  if (board === undefined) throw new Error("board is required");
-};
+  if (board === undefined) throw new Error('board is required')
+
+  let winningUser = ''
+  const a1 = [...board[0]]
+  const a2 = [...board[1]]
+  const a3 = [...board[2]]
+
+  //check all winning positions and take out user from it (value)
+  //col 1
+  if (a1[0] === a2[0] && a2[0] === a3[0]) winningUser = a1[0]
+  //col 2
+  else if (a1[1] === a2[1] && a2[1] === a3[1]) winningUser = a1[1]
+  //col 3
+  else if (a1[2] === a2[2] && a2[2] === a3[2]) winningUser = a1[2]
+  //row 1
+  else if (a1[0] === a1[1] && a1[1] === a1[2]) winningUser = a1[0]
+  //row 2
+  else if (a2[0] === a2[1] && a2[1] === a2[2]) winningUser = a2[0]
+  //row 3
+  else if (a3[0] === a3[1] && a3[1] === a3[2]) winningUser = a3[0]
+  //diagonal 1
+  else if (a1[0] === a2[1] && a2[1] === a3[2]) winningUser = a1[0]
+  //diagonal 1
+  else if (a1[2] === a2[1] && a2[1] === a3[0]) winningUser = a1[2]
+
+  return winningUser
+}
 
 module.exports = {
   sumDigits,
@@ -87,4 +159,4 @@ module.exports = {
   getScreentimeAlertList,
   hexToRGB,
   findWinner
-};
+}
