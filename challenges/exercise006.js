@@ -22,14 +22,17 @@ const isValidDNA = str => {
   const dnaStringVerifier = ['A', 'C', 'T', 'G']
   let dnaCharFrequency = 0
 
-  let charFrequency = (arr, str) =>
-    arr.reduce((count, value) => (value === str ? count + 1 : count), 0) //function to find out how many dna characters occuring in string array
+  let charFrequency = (
+    arr,
+    str //check-how many characters occuring in string array
+  ) => arr.reduce((count, value) => (value === str ? count + 1 : count), 0)
 
   for (let chars of dnaStringVerifier) {
-    dnaCharFrequency += charFrequency(strArr, chars) //how many dna charas present
+    //check-how many dna characters occuring in string array
+    dnaCharFrequency += charFrequency(strArr, chars)
   }
-
-  return strArr.length > 0 ? dnaCharFrequency === strArr.length : false // if all are dna chars then it is valid dna string
+  //check-if dna chars and all chars are same length then it is valid dna string
+  return strArr.length > 0 ? dnaCharFrequency === strArr.length : false
 }
 
 /**
@@ -100,7 +103,6 @@ const areWeCovered = (staff, day) => {
       element.rota.filter(rotaDay => rotaDay.includes(day))
     )
   })
-
   return staffRotasAvailiability.length >= 3
 }
 

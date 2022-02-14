@@ -5,10 +5,9 @@ function getSquares (nums) {
 
 function camelCaseWords (words) {
   if (words === undefined) throw new Error('words is required')
-  let camelCaseWOrdResult = words[0] //put 1st word as it is in resultText
-  words.shift() // remove that 1st word from array
+  let camelCaseWOrdResult = words[0]
+  words.shift()
   for (let word in words) {
-    // iterate through array
     camelCaseWOrdResult +=
       words[word].substring(0, 1).toUpperCase() +
       words[word].slice(1, words[word].length)

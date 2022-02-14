@@ -10,13 +10,7 @@ function isFromManchester (person) {
 
 function getBusNumbers (people) {
   if (people === undefined) throw new Error('people is required')
-  return people <= 40
-    ? 1
-    : people <= 80
-    ? 2
-    : people <= 120
-    ? 3
-    : Math.ceil(people / 40)
+  return Math.ceil(people / 40)
 }
 
 function countSheep (arr) {
@@ -30,12 +24,10 @@ function countSheep (arr) {
 
 function hasMPostCode (person) {
   if (person === undefined) throw new Error('person is required')
-  return !(
+  return (
     person.address.postCode.startsWith('M', 0) &&
     person.address.city === 'Manchester'
   )
-    ? false
-    : true
 }
 
 module.exports = {

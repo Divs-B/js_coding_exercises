@@ -39,14 +39,14 @@ const sumArrays = arrs => {
   if (arrs === undefined) throw new Error('arrs is required')
   let allInOne = []
   arrs.forEach(element => {
-    allInOne.push(...element) //put all arrays in one array
+    allInOne.push(...element)
   })
-  return allInOne.reduce((a, b) => a + b) //sum it using reduce
+  return allInOne.reduce((a, b) => a + b)
 }
 
 const arrShift = arr => {
   if (arr === undefined) throw new Error('arr is required')
-  let firstItem = arr[0] //take 1st item of array
+  let firstItem = arr[0]
   if (arr.length >= 2) {
     arr[0] = arr[arr.length - 1]
     arr[arr.length - 1] = firstItem

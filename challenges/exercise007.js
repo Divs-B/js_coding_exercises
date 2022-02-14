@@ -68,13 +68,11 @@ const getScreentimeAlertList = (users, date) => {
 
   let userNames = []
   users.forEach(user => {
-    //check any user matches with the date
     let userDateMatched = user.screenTime.filter(
       element => element.date === date
     )
 
     if (userDateMatched.length > 0) {
-      //if user found, proceed for screentime
       let userTotalTimeTaken = 0
       userDateMatched.forEach((key, value) => {
         for (const [usageKey, usageValue] of Object.entries(key.usage)) {
@@ -132,7 +130,6 @@ const findWinner = board => {
   const a2 = [...board[1]]
   const a3 = [...board[2]]
 
-  //check all winning positions and take out user from it (value)
   //col 1
   if (a1[0] === a2[0] && a2[0] === a3[0]) winningUser = a1[0]
   //col 2
