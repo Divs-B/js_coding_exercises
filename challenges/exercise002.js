@@ -16,8 +16,8 @@ function getBusNumbers (people) {
 function countSheep (arr) {
   if (arr === undefined) throw new Error('arr is required')
   let countSheeps = 0
-  arr.forEach(element => {
-    if (element === 'sheep') countSheeps += 1
+  arr.forEach(sheep => {
+    if (sheep === 'sheep') countSheeps += 1
   })
   return countSheeps
 }

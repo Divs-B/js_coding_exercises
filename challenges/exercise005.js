@@ -1,7 +1,7 @@
 const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error('nums is required')
   if (n === undefined) throw new Error('n is required')
-  let indexOfNumber = nums.indexOf(n)
+  const indexOfNumber = nums.indexOf(n)
   return indexOfNumber === -1 || indexOfNumber === nums.length - 1
     ? null
     : nums[indexOfNumber + 1]
@@ -9,12 +9,12 @@ const findNextNumber = (nums, n) => {
 
 const count1sand0s = str => {
   if (str === undefined) throw new Error('str is required')
-  let strArray = str.split('')
-  let zerosArray = []
-  let onesArray = []
+  const strArray = str.split('')
+  const zerosArray = []
+  const onesArray = []
 
-  strArray.forEach(element => {
-    Object.is(element, '0') ? zerosArray.push(element) : onesArray.push(element)
+  strArray.forEach(str => {
+    Object.is(str, '0') ? zerosArray.push(str) : onesArray.push(str)
   })
 
   const objFor1sAnd0s = {
@@ -37,11 +37,11 @@ const reverseNumber = n => {
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error('arrs is required')
-  let allInOne = []
-  arrs.forEach(element => {
-    allInOne.push(...element)
+  const allItemsInOneArray = []
+  arrs.forEach(eachArr => {
+    allItemsInOneArray.push(...eachArr)
   })
-  return allInOne.reduce((a, b) => a + b)
+  return allItemsInOneArray.reduce((a, b) => a + b)
 }
 
 const arrShift = arr => {
@@ -73,18 +73,18 @@ const findNeedle = (haystack, searchTerm) => {
 const getWordFrequencies = str => {
   if (str === undefined) throw new Error('str is required')
 
-  let strArr = str
+  const strArr = str
     .toLowerCase()
     .replace(/[^a-zA-Z ]/g, '')
     .split(' ')
 
-  let textfrequency = (arr, str) =>
+  const textfrequency = (arr, str) =>
     arr.reduce((count, value) => (value === str ? count + 1 : count), 0)
 
-  let myobj = new Object()
+  const myobj = new Object()
 
-  for (let str of strArr) {
-    let freq = textfrequency(strArr, str)
+  for (const str of strArr) {
+    const freq = textfrequency(strArr, str)
     Object.defineProperty(myobj, str, {
       value: freq,
       writable: true,

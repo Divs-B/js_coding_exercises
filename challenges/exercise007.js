@@ -7,8 +7,8 @@ const sumDigits = n => {
   const numberArr = n.toString().split('')
   let sum = 0
 
-  numberArr.forEach(element => {
-    sum += Number.parseInt(element)
+  numberArr.forEach(num => {
+    sum += Number.parseInt(num)
   })
 
   return sum
@@ -26,7 +26,7 @@ const createRange = (start, end, step) => {
   if (start === undefined) throw new Error('start is required')
   if (end === undefined) throw new Error('end is required')
   if (step === undefined) step = 1
-  let sequenceArr = []
+  const sequenceArr = []
   for (let i = start; i <= end; i += step) {
     sequenceArr.push(i)
   }
@@ -66,16 +66,16 @@ const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error('users is required')
   if (date === undefined) throw new Error('date is required')
 
-  let userNames = []
+  const userNames = []
   users.forEach(user => {
-    let userDateMatched = user.screenTime.filter(
+    const userDateMatched = user.screenTime.filter(
       element => element.date === date
     )
 
     if (userDateMatched.length > 0) {
       let userTotalTimeTaken = 0
-      userDateMatched.forEach((key, value) => {
-        for (const [usageKey, usageValue] of Object.entries(key.usage)) {
+      userDateMatched.forEach((userKey, userValue) => {
+        for (const [usageKey, usageValue] of Object.entries(userKey.usage)) {
           userTotalTimeTaken += usageValue //sum up all usage timings
         }
       })
@@ -98,7 +98,7 @@ const getScreentimeAlertList = (users, date) => {
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error('hexStr is required')
 
-  let hexStrArr = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexStr)
+  const hexStrArr = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexStr)
   let rgb = []
 
   if (hexStrArr != null) {

@@ -43,9 +43,9 @@ function reverseWord (word) {
 function reverseAllWords (words) {
   if (words === undefined) throw new Error('words is required')
   const newWordsArray = []
-  words.forEach(element => {
+  words.forEach(word => {
     newWordsArray.push(
-      element
+      word
         .split('')
         .reverse()
         .join('')
@@ -57,8 +57,8 @@ function reverseAllWords (words) {
 function countLinuxUsers (users) {
   if (users === undefined) throw new Error('users is required')
   let count = 0
-  users.forEach(element => {
-    if (element.type.includes('Linux')) count += 1
+  users.forEach(user => {
+    if (user.type.includes('Linux')) count += 1
   })
   return count
 }
@@ -66,8 +66,8 @@ function countLinuxUsers (users) {
 function getMeanScore (scores) {
   if (scores === undefined) throw new Error('scores is required')
   let sum = 0
-  scores.forEach(element => {
-    sum += element
+  scores.forEach(score => {
+    sum += score
   })
   return Number.isInteger(sum / scores.length)
     ? sum / scores.length

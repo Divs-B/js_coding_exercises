@@ -1,22 +1,22 @@
 function findSmallNums (nums) {
   if (!nums) throw new Error('nums is required')
-  return nums.filter(element => element < 1)
+  return nums.filter(num => num < 1)
 }
 
 function findNamesBeginningWith (names, char) {
   if (!names) throw new Error('names is required')
   if (!char) throw new Error('char is required')
-  return names.filter(element => element.startsWith(char))
+  return names.filter(name => name.startsWith(char))
 }
 
 function findVerbs (words) {
   if (!words) throw new Error('words is required')
-  return words.filter(element => element.includes('to '))
+  return words.filter(word => word.includes('to '))
 }
 
 function getIntegers (nums) {
   if (!nums) throw new Error('nums is required')
-  return nums.filter(element => element % 1 == 0)
+  return nums.filter(num => num % 1 == 0)
 }
 
 function getCities (users) {
@@ -26,9 +26,9 @@ function getCities (users) {
 
 function getSquareRoots (nums) {
   if (!nums) throw new Error('nums is required')
-  let sqrtArray = []
-  nums.forEach(element => {
-    let sqrtValue = Math.sqrt(element)
+  const sqrtArray = []
+  nums.forEach(num => {
+    const sqrtValue = Math.sqrt(num)
     sqrtValue % 1 === 0
       ? sqrtArray.push(sqrtValue)
       : sqrtArray.push(Number(sqrtValue.toFixed(2)))
@@ -44,11 +44,9 @@ function findSentencesContaining (sentences, str) {
 
 function getLongestSides (triangles) {
   if (!triangles) throw new Error('triangles is required')
-  let longestSideOfTraingles = []
-  triangles.forEach(triangle => {
-    longestSideOfTraingles.push(Math.max(...triangle))
+  return triangles.map(triangle => {
+    return Math.max(...triangle)
   })
-  return longestSideOfTraingles
 }
 
 module.exports = {

@@ -6,7 +6,7 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error('arr is required')
-  let newarr = arr.filter(element => element % 3 == 0 && element % 5 == 0)
+  const newarr = arr.filter(num => num % 3 == 0 && num % 5 == 0)
   return newarr.length > 0 ? newarr.reduce((count, value) => count + value) : 0
 }
 
@@ -18,11 +18,11 @@ const sumMultiples = arr => {
 const isValidDNA = str => {
   if (str === undefined) throw new Error('str is required')
 
-  let strArr = str.toUpperCase().split('')
+  const strArr = str.toUpperCase().split('')
   const dnaStringVerifier = ['A', 'C', 'T', 'G']
   let dnaCharFrequency = 0
 
-  let charFrequency = (
+  const charFrequency = (
     arr,
     str //check-how many characters occuring in string array
   ) => arr.reduce((count, value) => (value === str ? count + 1 : count), 0)
@@ -42,12 +42,12 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error('str is required')
-  let strArr = str.toUpperCase().split('')
+  const strArr = str.toUpperCase().split('')
   const dnaStringVerifier = ['A', 'C', 'T', 'G']
   const dnaCompStringVerifier = ['T', 'G', 'A', 'C']
 
-  for (let chrIndex in strArr) {
-    let index = dnaStringVerifier.indexOf(strArr[chrIndex])
+  for (const chrIndex in strArr) {
+    const index = dnaStringVerifier.indexOf(strArr[chrIndex])
     strArr.splice(chrIndex, 1, dnaCompStringVerifier[index])
   }
   return strArr.join('').toLowerCase()
@@ -97,10 +97,10 @@ const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error('staff is required')
   if (day === undefined) throw new Error('day is required')
 
-  let staffRotasAvailiability = []
-  staff.forEach(element => {
+  const staffRotasAvailiability = []
+  staff.forEach(staffMember => {
     staffRotasAvailiability.push(
-      element.rota.filter(rotaDay => rotaDay.includes(day))
+      staffMember.rota.filter(rotaDay => rotaDay.includes(day))
     )
   })
   return staffRotasAvailiability.length >= 3

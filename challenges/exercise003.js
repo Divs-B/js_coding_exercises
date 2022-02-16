@@ -18,8 +18,8 @@ function camelCaseWords (words) {
 function getTotalSubjects (people) {
   if (people === undefined) throw new Error('people is required')
   let totalValue = 0
-  people.forEach(element => {
-    totalValue += element.subjects.length
+  people.forEach(person => {
+    totalValue += person.subjects.length
   })
   return totalValue
 }
@@ -40,9 +40,9 @@ function duplicateNumbers (arr1, arr2) {
   if (arr1 === undefined) throw new Error('arr1 is required')
   if (arr2 === undefined) throw new Error('arr2 is required')
   let newArr = []
-  arr1.forEach(element1 => {
-    arr2.forEach(element2 => {
-      if (element1 === element2) newArr.push(element1)
+  arr1.forEach(arr1Item => {
+    arr2.forEach(arr2Item => {
+      if (arr1Item === arr2Item) newArr.push(arr1Item)
     })
   })
   newArr.sort()
